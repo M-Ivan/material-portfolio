@@ -10,8 +10,8 @@ export const __FragmentName__Fragment: React.FC<__FragmentName__FragmentProps> =
     const { useController = use__FragmentName__Controller } = props;
     const controller = useController();
 
+    const classes = use__FragmentName__Styles();
+
     // Render
-    return (
-      <div className={"__FragmentName__(kebabCase)"}>__FragmentName__</div>
-    );
+    return <div className={classes.root}>__FragmentName__</div>;
   };
