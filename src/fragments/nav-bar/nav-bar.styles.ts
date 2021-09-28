@@ -1,8 +1,28 @@
-import { Theme } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+
+export const navBarStyles = {
+  root: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  activeAppBar: {
+    flexGrow: 1,
+    margin: 0,
+    //  position: "fixed",
+    alignItems: { xs: "flex-start", md: "center" },
+    justifyContent: "center",
+    display: "flex",
+    borderBottom: "3px solid #d300c1",
+    backgroundColor: "#19171d",
+    height: "60px",
+    zIndex: 10,
+  },
+};
 
 export const useNavBarStyles = makeStyles((theme: Theme) => ({
   root: {
+    justifyContent: "center",
     alignItems: "center",
   },
   appbar: {
@@ -21,7 +41,6 @@ export const useNavBarStyles = makeStyles((theme: Theme) => ({
       alignItems: "flex-start",
     },
   },
-  // Fix: ZINDEX?
   appbarActive: {
     flexGrow: 1,
     margin: 0,
@@ -44,14 +63,6 @@ export const useNavBarStyles = makeStyles((theme: Theme) => ({
     "&: hover": {
       color: "#d300c1",
     },
-  },
-  active: {
-    color: "#ff9100",
-  },
-
-  icon: {
-    marginRight: "5px",
-    color: "#8600d3",
   },
   menu: {
     color: "#ff9100",

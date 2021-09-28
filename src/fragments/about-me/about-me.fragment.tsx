@@ -5,16 +5,22 @@ import {
 } from "fragments/about-me/about-me.styles";
 import { AboutMeFragmentProps } from "fragments/about-me/interfaces";
 import { useAboutMeController } from "fragments/about-me/about-me.controller";
-import { Box, Button, Grid, Hidden, Slide } from "@material-ui/core";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import BuildIcon from "@material-ui/icons/Build";
-import EmojiObjectsOutlinedIcon from "@material-ui/icons/EmojiObjectsOutlined";
-import CodeIcon from "@material-ui/icons/Code";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import { useAnimationContext } from "context/animations.context";
+import { Box } from "@mui/system";
+import { Button, Grid, Hidden, Slide } from "@mui/material";
+import EmojiObjectsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
+import CodeIcon from "@mui/icons-material/Code";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import BuildIcon from "@mui/icons-material/Build";
+import GetAppIcon from "@mui/icons-material/GetApp";
 
 export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
   const { useController = useAboutMeController } = props;
   const controller = useController();
+
+  const { about, aboutAnimation } = useAnimationContext();
+
+  const aboutSection: any = about;
 
   const classes = useAboutMeStyles();
 
@@ -45,8 +51,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
         <Grid item xs={12}>
           <Slide
             direction="left"
-            in={animation}
-            {...(animation ? { timeout: 1000 } : {})}
+            in={aboutAnimation}
+            {...(aboutAnimation ? { timeout: 1000 } : {})}
           >
             <Grid
               container
@@ -62,8 +68,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               <Grid item xs={6} lg={3}>
                 <Slide
                   direction="right"
-                  in={animation}
-                  {...(animation ? { timeout: 1000 } : {})}
+                  in={aboutAnimation}
+                  {...(aboutAnimation ? { timeout: 1000 } : {})}
                 >
                   <Grid container alignItems="center" direction="column">
                     <Grid className="hexagon-skill">
@@ -87,8 +93,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               <Grid item xs={6} lg={3}>
                 <Slide
                   direction="right"
-                  in={animation}
-                  {...(animation ? { timeout: 1000 } : {})}
+                  in={aboutAnimation}
+                  {...(aboutAnimation ? { timeout: 1000 } : {})}
                 >
                   <Grid container alignItems="center" direction="column">
                     <Grid className="hexagon-skill">
@@ -112,8 +118,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               <Grid item xs={6} lg={3}>
                 <Slide
                   direction="right"
-                  in={animation}
-                  {...(animation ? { timeout: 1000 } : {})}
+                  in={aboutAnimation}
+                  {...(aboutAnimation ? { timeout: 1000 } : {})}
                 >
                   <Grid container alignItems="center" direction="column">
                     <Grid className="hexagon-skill">
@@ -139,8 +145,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               <Grid item xs={6} lg={3}>
                 <Slide
                   direction="right"
-                  in={animation}
-                  {...(animation ? { timeout: 1000 } : {})}
+                  in={aboutAnimation}
+                  {...(aboutAnimation ? { timeout: 1000 } : {})}
                 >
                   <Grid container alignItems="center" direction="column">
                     <Grid className="hexagon-skill">
@@ -164,8 +170,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               <Grid item xs={12} lg={6}>
                 <Slide
                   direction="right"
-                  in={animation}
-                  {...(animation ? { timeout: 1000 } : {})}
+                  in={aboutAnimation}
+                  {...(aboutAnimation ? { timeout: 1000 } : {})}
                 >
                   <Grid
                     container
@@ -174,8 +180,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                     direction="column"
                   >
                     <div className={`hexagon`}>
-                      <div class="hexTop"></div>
-                      <div class="hexBottom"></div>
+                      <div className="hexTop"></div>
+                      <div className="hexBottom"></div>
                     </div>
                     {
                       //   <Avatar
@@ -210,8 +216,8 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
               </Grid>
               <Slide
                 direction="left"
-                in={animation}
-                {...(animation ? { timeout: 1000 } : {})}
+                in={aboutAnimation}
+                {...(aboutAnimation ? { timeout: 1000 } : {})}
               >
                 <Grid item xs={12} lg={6} style={{ alignSelf: "center" }}>
                   <Grid container alignItems="center">

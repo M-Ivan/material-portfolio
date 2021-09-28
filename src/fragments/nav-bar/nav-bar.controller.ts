@@ -1,6 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { NavBarController, SectionData } from "fragments/nav-bar/interfaces";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { NavBarController } from "fragments/nav-bar/interfaces";
 import { useWindowScroll } from "react-use";
+import { useAnimationContext } from "context/animations.context";
 
 export const useNavBarController = (): NavBarController => {
   /* State */
@@ -8,10 +9,16 @@ export const useNavBarController = (): NavBarController => {
   const { y: pageYOffset } = useWindowScroll();
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(false);
 
-  const [headerAnimation, setHeaderAnimation] = useState(false);
-  const [aboutAnimation, setAboutAnimation] = useState(false);
-  const [portfolioAnimation, setPortfolioAnimation] = useState(false);
-  const [contactAnimation, setContactAnimation] = useState(false);
+  const {
+    header,
+    setHeaderAnimation,
+    about,
+    setAboutAnimation,
+    folio,
+    setPortfolioAnimation,
+    contact,
+    setContactAnimation,
+  } = useAnimationContext();
 
   const handleParentCallback = () => {
     // setOpen((prev) => !prev);

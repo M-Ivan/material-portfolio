@@ -1,8 +1,8 @@
 import React from "react";
-import { useNavBarStyles } from "fragments/nav-bar/nav-bar.styles";
 import { NavBarFragmentProps } from "fragments/nav-bar/interfaces";
 import { useNavBarController } from "fragments/nav-bar/nav-bar.controller";
-import SortIcon from "@material-ui/icons/Sort";
+import { navBarStyles as classes } from "fragments/nav-bar/nav-bar.styles";
+import SortIcon from "@mui/icons-material/Sort";
 import {
   AppBar,
   Button,
@@ -11,21 +11,19 @@ import {
   IconButton,
   Slide,
   Toolbar,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export const NavBarFragment: React.FC<NavBarFragmentProps> = (props) => {
   const { useController = useNavBarController } = props;
   const controller = useController();
-
-  const classes = useNavBarStyles();
 
   // Render
   return (
     <Grid
       container
       component={"div"}
-      className={classes.root}
-      justifyContent="center"
+      //  className={classes.root}
+      sx={classes.root}
     >
       {controller.isNavBarVisible ? (
         <Slide
@@ -33,7 +31,10 @@ export const NavBarFragment: React.FC<NavBarFragmentProps> = (props) => {
           {...{ timeout: 700 }}
           in={controller.isNavBarVisible}
         >
-          <AppBar className={classes.appbarActive} elevation={0}>
+          <AppBar
+            elevation={0}
+            sx={{ ...classes.activeAppBar, position: "fixed" }}
+          >
             <Toolbar>
               <Hidden mdUp>
                 <IconButton
@@ -42,48 +43,67 @@ export const NavBarFragment: React.FC<NavBarFragmentProps> = (props) => {
                   color="inherit"
                   aria-label="menu"
                 >
-                  <SortIcon className={classes.menu} />
+                  <SortIcon
+                    sx={{ color: "#ff9100", width: "2rem", height: "2rem" }}
+                  />
                 </IconButton>
               </Hidden>
               <Hidden smDown>
                 <Button
                   href="#header"
                   onClick={controller.gotoHeader}
-                  className={classes.button}
+                  //  className={classes.button}
+                  sx={{
+                    color: "#fff",
+                    position: "relative",
+                    transition: "0.5s",
+                    ":hover": {
+                      color: "#d300c1",
+                    },
+                  }}
                 >
-                  {
-                    // <HomeOutlinedIcon className={classes.icon} />
-                  }
                   Inicio
                 </Button>{" "}
                 <Button
                   href="#aboutme"
                   onClick={controller.gotoAbout}
-                  className={classes.button}
+                  sx={{
+                    color: "#fff",
+                    position: "relative",
+                    transition: "0.5s",
+                    ":hover": {
+                      color: "#d300c1",
+                    },
+                  }}
                 >
-                  {
-                    // <FingerprintIcon className={classes.icon} />
-                  }
                   Sobre mí
                 </Button>{" "}
                 <Button
                   href="#portafolio"
                   onClick={controller.gotoFolio}
-                  className={classes.button}
+                  sx={{
+                    color: "#fff",
+                    position: "relative",
+                    transition: "0.5s",
+                    ":hover": {
+                      color: "#d300c1",
+                    },
+                  }}
                 >
-                  {
-                    //  <WorkOutlineOutlinedIcon className={classes.icon} />
-                  }{" "}
                   Portafolio
                 </Button>{" "}
                 <Button
                   href="#contacto"
                   onClick={controller.gotoContact}
-                  className={classes.button}
+                  sx={{
+                    color: "#fff",
+                    position: "relative",
+                    transition: "0.5s",
+                    ":hover": {
+                      color: "#d300c1",
+                    },
+                  }}
                 >
-                  {
-                    //<EmailOutlinedIcon className={classes.icon} />
-                  }{" "}
                   Contacto
                 </Button>
               </Hidden>
@@ -91,7 +111,22 @@ export const NavBarFragment: React.FC<NavBarFragmentProps> = (props) => {
           </AppBar>
         </Slide>
       ) : (
-        <AppBar className={classes.appbar} elevation={0}>
+        <AppBar
+          sx={{
+            margin: 0,
+            position: "absolute",
+            display: "flex",
+            alignItems: { xs: "flex-start", md: "center" },
+            justifyContent: "center",
+            top: "100vh",
+            bottom: 0,
+            borderBottom: "3px solid #d300c1",
+            backgroundColor: "#19171d",
+            height: "60px",
+            zIndex: 1,
+          }}
+          elevation={0}
+        >
           <Toolbar>
             <Hidden mdUp>
               <IconButton
@@ -100,48 +135,66 @@ export const NavBarFragment: React.FC<NavBarFragmentProps> = (props) => {
                 color="inherit"
                 aria-label="menu"
               >
-                <SortIcon className={classes.menu} />
+                <SortIcon
+                  sx={{ color: "#ff9100", width: "2rem", height: "2rem" }}
+                />
               </IconButton>{" "}
             </Hidden>
             <Hidden smDown>
               <Button
                 href="#header"
                 onClick={controller.gotoHeader}
-                className={classes.button}
+                sx={{
+                  color: "#fff",
+                  position: "relative",
+                  transition: "0.5s",
+                  ":hover": {
+                    color: "#d300c1",
+                  },
+                }}
               >
-                {
-                  // <HomeOutlinedIcon className={classes.icon} />
-                }{" "}
                 Inicio
               </Button>{" "}
               <Button
                 href="#aboutme"
                 onClick={controller.gotoAbout}
-                className={classes.button}
+                sx={{
+                  color: "#fff",
+                  position: "relative",
+                  transition: "0.5s",
+                  ":hover": {
+                    color: "#d300c1",
+                  },
+                }}
               >
-                {
-                  // <FingerprintIcon className={classes.icon} />
-                }{" "}
                 Sobre mí
               </Button>{" "}
               <Button
                 href="#portafolio"
                 onClick={controller.gotoFolio}
-                className={classes.button}
+                sx={{
+                  color: "#fff",
+                  position: "relative",
+                  transition: "0.5s",
+                  ":hover": {
+                    color: "#d300c1",
+                  },
+                }}
               >
-                {
-                  //  <WorkOutlineOutlinedIcon className={classes.icon} />
-                }{" "}
                 Portafolio
               </Button>{" "}
               <Button
                 href="#contacto"
                 onClick={controller.gotoContact}
-                className={classes.button}
+                sx={{
+                  color: "#fff",
+                  position: "relative",
+                  transition: "0.5s",
+                  ":hover": {
+                    color: "#d300c1",
+                  },
+                }}
               >
-                {
-                  //<EmailOutlinedIcon className={classes.icon} />
-                }{" "}
                 Contacto
               </Button>{" "}
             </Hidden>

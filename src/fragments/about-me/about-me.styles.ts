@@ -1,5 +1,5 @@
-import { LinearProgress, Theme } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/styles";
+import { LinearProgress, Theme } from "@mui/material";
+import { makeStyles, withStyles } from "@mui/styles";
 
 export const SkillsLinearProgress = withStyles((theme: Theme) => ({
   root: {
@@ -7,7 +7,7 @@ export const SkillsLinearProgress = withStyles((theme: Theme) => ({
   },
   colorPrimary: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 400 : 700],
+      theme.palette?.grey[theme.palette.mode === "light" ? 400 : 700],
   },
   bar: {
     backgroundImage:
@@ -25,7 +25,7 @@ export const useAboutMeStyles = makeStyles((theme: Theme) => ({
   aboutme: {
     padding: "1rem 20% 1rem 20%",
     justifyContent: "center",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints?.down("md")]: {
       padding: "1rem 10% 1rem 10%",
     },
   },
