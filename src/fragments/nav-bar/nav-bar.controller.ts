@@ -9,57 +9,13 @@ export const useNavBarController = (): NavBarController => {
   const { y: pageYOffset } = useWindowScroll();
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(false);
 
-  const {
-    header,
-    setHeaderAnimation,
-    about,
-    setAboutAnimation,
-    folio,
-    setPortfolioAnimation,
-    contact,
-    setContactAnimation,
-  } = useAnimationContext();
+  const { header, about, folio, contact } = useAnimationContext();
 
   const handleParentCallback = () => {
     // setOpen((prev) => !prev);
   };
 
   /* Listeners */
-  useLayoutEffect(() => {
-    function updatePosition() {
-      if (header.current && about.current && folio.current && contact.current) {
-        if (window.pageYOffset === 0) {
-          setAboutAnimation(false);
-          setPortfolioAnimation(false);
-          setContactAnimation(false);
-        }
-        if (about && window.pageYOffset < about.current.offsetTop) {
-          setHeaderAnimation(true);
-        }
-        if (
-          window.pageYOffset < folio.current.offsetTop &&
-          window.pageYOffset >= about.current.offsetTop * 0.9
-        ) {
-          setAboutAnimation(true);
-        }
-        if (
-          window.pageYOffset < contact.current.offsetTop &&
-          window.pageYOffset >= folio.current.offsetTop * 0.9
-        ) {
-          setPortfolioAnimation(true);
-          setHeaderAnimation(false);
-        }
-        if (contact && window.pageYOffset > contact.current.offsetTop * 0.9) {
-          setContactAnimation(true);
-          setAboutAnimation(false);
-          setPortfolioAnimation(false);
-        }
-      }
-    }
-    window.addEventListener("scroll", updatePosition);
-    updatePosition();
-  }, [about, header, folio, contact]);
-
   useEffect(() => {
     if (about.current && pageYOffset >= about.current.offsetTop) {
       setIsNavBarVisible(true);

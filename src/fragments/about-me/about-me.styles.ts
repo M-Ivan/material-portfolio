@@ -1,21 +1,22 @@
-import { LinearProgress, Theme } from "@mui/material";
-import { makeStyles, withStyles } from "@mui/styles";
+import { Theme } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
 
-export const SkillsLinearProgress = withStyles((theme: Theme) => ({
-  root: {
-    height: 25,
-  },
-  colorPrimary: {
+export const SkillsLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 25,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette?.grey[theme.palette.mode === "light" ? 400 : 700],
+      theme.palette?.grey[theme.palette?.mode === "light" ? 400 : 700],
   },
-  bar: {
+  [`& .${linearProgressClasses.bar}`]: {
     backgroundImage:
       "linear-gradient(to right, #a000c0, #a000c0, #a000c0, #ff9100)",
   },
-}))(LinearProgress);
+}));
 
-export const useAboutMeStyles = makeStyles((theme: Theme) => ({
+export const aboutMeStyles = {
   root: {
     background: "none",
     backgroundColor: "#f3f3f3",
@@ -23,23 +24,24 @@ export const useAboutMeStyles = makeStyles((theme: Theme) => ({
     minHeight: "100vh",
   },
   aboutme: {
-    padding: "1rem 20% 1rem 20%",
+    height: "100%",
+    padding: "1rem 10% 1rem 10%",
     justifyContent: "center",
-    [theme.breakpoints?.down("md")]: {
-      padding: "1rem 10% 1rem 10%",
-    },
+    // [theme.breakpoints?.up("md")]: {
+    //   padding: "1rem 20% 1rem 20%",
+    // },
   },
   descriptionText: {
     fontSize: "1.2rem",
     color: "#3d3d3d",
     padding: "0 0rem 2rem 0",
-    textAlign: "center",
+    //textAlign: "center",
   },
   title: {
     fontWeight: "bold",
-    padding: "1rem 0 1rem 0",
-    textAlign: "center",
-    textTransform: "uppercase",
+    padding: "2rem 0 1rem 0",
+    //  textAlign: "center",
+    // textTransform: "uppercase",
     display: "inline-block",
     textDecoration: "none",
     backgroundImage: "radial-gradient(circle, #ff9100, #d31ec0)",
@@ -54,24 +56,11 @@ export const useAboutMeStyles = makeStyles((theme: Theme) => ({
   subtitleColor: {
     color: "#d300c1",
   },
-  avatar: {
-    width: "100%",
-    height: "100%",
-    maxWidth: "270px",
-    maxHeight: "270px",
-    marginTop: "2rem",
-  },
+
   skillArea: {
-    marginTop: "3rem",
+    padding: "3rem 0",
   },
-  // skill: {
-  //   padding: 0,
-  //   borderRadius: "50%",
-  //   width: "100px",
-  //   height: "100px",
-  //   backgroundColor: "#ff9100",
-  //   display: "flex",
-  // },
+
   skillText: {
     textAlign: "center",
     fontSize: "1.1rem",
@@ -87,8 +76,7 @@ export const useAboutMeStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     color: "#fff",
     fontWeight: "bold",
-    height: 26,
-    borderRadius: "0.15rem",
+    height: 28,
     backgroundColor: "#d300c1",
     justifyContent: "center",
     alignItems: "center",
@@ -105,4 +93,4 @@ export const useAboutMeStyles = makeStyles((theme: Theme) => ({
       color: "#fff",
     },
   },
-}));
+};
