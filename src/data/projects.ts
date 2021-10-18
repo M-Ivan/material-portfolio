@@ -2,14 +2,14 @@ export const projects = [
   {
     title: "BullsOn",
     images: [
-      "/assets/proyects/bullsOn/bullsOn.png",
-      "/assets/proyects/bullsOn/bullsOn1.png",
-      "/assets/proyects/bullsOn/bullsOn2.png",
-      "/assets/proyects/bullsOn/bullsOn3.png",
-      "/assets/proyects/bullsOn/bullsOn4.png",
-      "/assets/proyects/bullsOn/bullsOn5.png",
-      "/assets/proyects/bullsOn/bullsOn6.png",
-      "/assets/proyects/bullsOn/bullsOn7.png",
+      "/images/projects/bullsOn/bullsOn.png",
+      "/images/projects/bullsOn/bullsOn1.png",
+      "/images/projects/bullsOn/bullsOn2.png",
+      "/images/projects/bullsOn/bullsOn3.png",
+      "/images/projects/bullsOn/bullsOn4.png",
+      "/images/projects/bullsOn/bullsOn5.png",
+      "/images/projects/bullsOn/bullsOn6.png",
+      "/images/projects/bullsOn/bullsOn7.png",
     ],
     stack: "React (M-UI) / MongoDB / Express",
     description:
@@ -20,6 +20,7 @@ export const projects = [
   },
   {
     title: "Buscador de pasajes",
+    images: ["/images/projects/buscador/buscadorPasajes.png"],
     stack: "React (M-UI) / MongoDB / Express",
     description:
       "Proyecto que hace request a una API REST y devuelve una lista de pasajes que cumplan con los requisitos solicitados.",
@@ -29,6 +30,7 @@ export const projects = [
   },
   {
     title: "AmLibre",
+    images: ["/images/projects/e-commerce/E-commerce.png"],
     stack: "React / MongoDB / Express",
     description:
       "AmLibre es un E-Commerce completamente funcional y hecho a semejanza de Amazon y Mercado Libre, acepta pagos con PayPal, ofrece seguimiento de ordenes y dashoard del admin y vendedor. Entre otras cosas.",
@@ -38,6 +40,10 @@ export const projects = [
   },
   {
     title: "Restaurante",
+    images: [
+      "/images/projects/restaurante/reactstaurante.png",
+      "/images/projects/restaurante/reactstaurante 2.png",
+    ],
     stack: "React (ReactStrap) / MongoDB / Express",
     description:
       "Aplicación con backend incluido que ofrece un menu, configuracion, lista de platos y demás a los usuarios en una sola pagina, ya que se trata de una SPA.",

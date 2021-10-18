@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "components/project/project.scss";
 import {
   Button,
   Card,
   CardActionArea,
   CardMedia,
+  Divider,
   Fade,
   Grid,
   Grow,
@@ -22,6 +22,7 @@ import {
 } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { projectStyles as classes } from "components/project/project.styles";
+import { RalewayTypography } from "global.styles";
 
 export interface ProjectProps {
   title: string;
@@ -72,12 +73,15 @@ const Project: React.FC<ProjectProps> = (props) => {
     <Grow in={isDetailsModalVisible} {...{ timeout: 400 }}>
       <Grid
         container
-        justify="center"
+        justifyContent="center"
         component="div"
-        sx={{ ...classes.modal }}
+        sx={{
+          ...classes.modal,
+          // position: "absolute",
+        }}
       >
         <IconButton
-          sx={{ ...classes.close }}
+          sx={{ ...classes.close, position: "absolute" }}
           onClick={() => setIsDetailsModalVisible(!isDetailsModalVisible)}
         >
           <Close />
@@ -85,7 +89,6 @@ const Project: React.FC<ProjectProps> = (props) => {
         <Grid item xs={12} md={9}>
           <CardMedia
             component="div"
-            alt="Project 2"
             image={images[current]}
             title="Project 2"
             sx={{ ...classes.img }}
@@ -95,7 +98,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                 <Grid
                   container
                   component="div"
-                  justify="space-between"
+                  justifyContent="space-between"
                   style={{ height: "90%" }}
                 >
                   <IconButton onClick={handleBack} sx={{ ...classes.back }}>
@@ -113,13 +116,19 @@ const Project: React.FC<ProjectProps> = (props) => {
                 container
                 component={"div"}
                 alignItems="flex-end"
-                justify="flex-end"
+                justifyContent="flex-end"
               >
-                <Button href={demoUrl} sx={{ ...classes.modalBtn }}>
+                <Button
+                  href={demoUrl}
+                  sx={{ ...classes.modalBtn, position: "relative" }}
+                >
                   Demo
                   <Launch />
                 </Button>
-                <Button href={repoUrl} sx={{ ...classes.modalBtn }}>
+                <Button
+                  href={repoUrl}
+                  sx={{ ...classes.modalBtn, position: "relative" }}
+                >
                   Repo
                   <GitHub />
                 </Button>
@@ -135,14 +144,14 @@ const Project: React.FC<ProjectProps> = (props) => {
             padding: "2rem",
           }}
         >
-          <CustomTypography
+          <RalewayTypography
             variant="h4"
             gutterBottom
             sx={{ ...classes.nombre }}
           >
             {title}
-          </CustomTypography>
-          <CustomTypography
+          </RalewayTypography>
+          <RalewayTypography
             variant="subtitle1"
             color="textSecondary"
             gutterBottom
@@ -153,10 +162,10 @@ const Project: React.FC<ProjectProps> = (props) => {
             }}
           >
             {type}
-          </CustomTypography>
+          </RalewayTypography>
           <Divider />
 
-          <CustomTypography variant="body1">{description}</CustomTypography>
+          <RalewayTypography variant="body1">{description}</RalewayTypography>
         </Grid>
       </Grid>
     </Grow>
@@ -180,7 +189,7 @@ const Project: React.FC<ProjectProps> = (props) => {
                   alt={title}
                   height="300"
                   width="400"
-                  image={images ? images[0] : null}
+                  image={images ? images[0] : undefined}
                   title={title}
                 />
               </CardActionArea>
@@ -193,10 +202,10 @@ const Project: React.FC<ProjectProps> = (props) => {
                     <span style={{ ...classes.nombre }}>{title}</span> <br />
                     <span style={{ ...classes.tecnologias }}>{stack}</span>
                   </Box>
-                  <Grid component="div" container justify="center">
+                  <Grid component="div" container justifyContent="center">
                     <Button
                       onClick={() => setIsDetailsModalVisible(true)}
-                      classes={{ root: classes.button }}
+                      sx={{ ...classes.button }}
                     >
                       Más Info <Subject />
                     </Button>

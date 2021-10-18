@@ -16,6 +16,7 @@ export const useMainController =
       contact,
       headerAnimation,
       aboutAnimation,
+      portfolioAnimation,
       setContactAnimation,
       setAboutAnimation,
       setHeaderAnimation,
@@ -23,6 +24,10 @@ export const useMainController =
     } = useAnimationContext();
 
     const { y: pageYOffset } = useWindowScroll();
+
+    console.log("headerAnimation", headerAnimation);
+    console.log("aboutAnimation", aboutAnimation);
+    console.log("portfolioAnimation", portfolioAnimation);
 
     /* Listeners */
     useLayoutEffect(() => {
@@ -37,15 +42,12 @@ export const useMainController =
         }
         if (
           about.current &&
-          // window.pageYOffset < folio.current.offsetTop &&
           window.pageYOffset >= about.current.offsetTop * 0.9
         ) {
           setAboutAnimation(true);
         }
         if (
-          contact.current &&
           folio.current &&
-          window.pageYOffset < contact.current.offsetTop &&
           window.pageYOffset >= folio.current.offsetTop * 0.9
         ) {
           setPortfolioAnimation(true);
@@ -60,7 +62,6 @@ export const useMainController =
           setPortfolioAnimation(false);
         }
       }
-      updatePosition();
 
       window.addEventListener("scroll", updatePosition, { passive: true });
       return () => {

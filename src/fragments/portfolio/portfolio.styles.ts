@@ -1,4 +1,4 @@
-export const usePortfolioStyles = {
+export const portfolioStyles = {
   root: {
     background: "none",
     backgroundColor: "#3f3f3f",
@@ -11,10 +11,10 @@ export const usePortfolioStyles = {
     justifyContent: "center",
   },
   title: {
-    fontWeight: "600",
+    fontWeight: "bold",
     padding: "2rem 0 1rem 0",
-    textAlign: "center",
-    textTransform: "uppercase",
+    // textAlign: "center",
+    // textTransform: "uppercase",
     display: "inline-block",
     textDecoration: "none",
     backgroundImage: "radial-gradient(circle, #ff9100, #d31ec0)",

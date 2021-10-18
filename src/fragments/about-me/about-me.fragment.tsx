@@ -196,7 +196,7 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={6} sx={{ padding: "3rem 1rem" }}>
             <Slide
               direction="right"
               in={aboutAnimation}
@@ -246,14 +246,14 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
             in={aboutAnimation}
             {...(aboutAnimation ? { timeout: 1000 } : {})}
           >
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={6} sx={{ padding: "3rem 1rem" }}>
               <Grid
                 container
                 alignItems="center"
                 sx={{ height: { xs: "50vh", lg: "100%" } }}
               >
                 {skillsWithProgress.map((skill) => (
-                  <Grid container alignItems="center">
+                  <Grid key={skill.title} container alignItems="center">
                     <Grid
                       item
                       xs={3}

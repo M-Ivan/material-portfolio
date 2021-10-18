@@ -1,5 +1,5 @@
 import { AnimationContext, SectionData } from "context/animations.context";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 const AnimationProvider: React.FC = (props) => {
   const [headerAnimation, setHeaderAnimation] = useState<boolean>(false);

@@ -1,3 +1,5 @@
+import { Theme } from "@mui/material";
+
 export const projectStyles = {
   root: {
     width: "100%",
@@ -52,29 +54,22 @@ export const projectStyles = {
   },
   modal: {
     borderRadius: "1rem",
-    position: "absolute",
-    width: "90%",
-    height: "67%",
     backgroundColor: "#fff",
-    //   boxShadow: theme.shadows[24],
-    top: "13%",
-    left: "5%",
+    boxShadow: (theme: Theme) => theme.shadows[24],
+    top: { xs: "0%", md: "13%" },
+    left: { xs: "0%", md: "5%" },
     transform: "translate(-50, -50%)",
-    // [theme.breakpoints.down("md")]: {
-    //   overflow: "scroll",
-    //   width: "100%",
-    //   height: "100%",
-    //   top: "0%",
-    //   left: "0%",
-    // },
+    width: { xs: "100%", md: "90%" },
+    height: { xs: "100%", md: "70%" },
   },
   close: {
-    position: "absolute",
+    // position: "absolute",
     top: "5px",
     right: "1%",
     width: "50px",
     height: "50px",
     zIndex: 100,
+
     // [theme.breakpoints.down("sm")]: {
     //   color: "#000",
     //   backgroundColor: "#ffffff40",
@@ -88,19 +83,20 @@ export const projectStyles = {
     display: "flex",
     padding: "1rem",
     transition: "1s",
+    alignItems: { xs: "flex-end", md: "flex-start" },
     // [theme.breakpoints.down("sm")]: {
     //   alignItems: "flex-end",
     // },
   },
   modalBtn: {
     backgroundColor: "#ff9100",
-    position: "relative",
+    //  position: "relative",
     justifySelf: "center",
     bottom: "0px",
     borderRadius: "0%",
     color: "#fff",
     fontWeight: 600,
-    padding: "0.4rem 2rem 0.4rem 2rem ",
+    padding: "0.4rem 1rem 0.4rem 1rem ",
     "&:hover": {
       backgroundColor: "#fff",
       color: "#3f3f3f",
@@ -114,6 +110,20 @@ export const projectStyles = {
     },
   },
   back: {
+    boxShadow: (theme: Theme) => theme.shadows[7],
+    color: "#d300c1",
+    top: { xs: "0%", md: "50%" },
+    height: { xs: "100%", md: "50px" },
+    borderRadius: { xs: "0%" },
+    marginLeft: { xs: "0rem", md: "1rem" },
+    backgroundColor: {
+      xs: "transparent",
+      md: "#fff",
+    },
+    transition: "0.6s",
+    width: "50px",
+    left: "0%",
+    zIndex: 10,
     // boxShadow: theme.shadows[7],
     // [theme.breakpoints.down("md")]: {
     //   color: "#d300c1",
@@ -127,16 +137,8 @@ export const projectStyles = {
     //     backgroundColor: "transparent",
     //   },
 
-    marginLeft: "1rem",
-    position: "relative",
-    backgroundColor: "#fff",
-    transition: "0.6s",
-    width: "50px",
-    height: "50px",
-    top: "50%",
-    left: "0%",
-    color: "#d300c1",
-    zIndex: 10,
+    // position: "relative",
+
     // [theme.breakpoints.up("lg")]: {
     //   "&:hover": {
     //     backgroundColor: "#d300c1",
@@ -157,17 +159,25 @@ export const projectStyles = {
     //   "&:hover": {
     //     backgroundColor: "transparent",
     //   },
-
-    marginRight: "1rem",
-    position: "relative",
-    backgroundColor: "#fff",
+    boxShadow: (theme: Theme) => theme.shadows[7],
+    color: "#d300c1",
+    top: { xs: "0%", md: "50%" },
+    height: { xs: "100%", md: "50px" },
+    borderRadius: { xs: "0%" },
+    marginLeft: { xs: "0rem", md: "1rem" },
+    backgroundColor: {
+      xs: "transparent",
+      md: "#fff",
+    },
     transition: "0.6s",
     width: "50px",
-    height: "50px",
-    right: "0%",
-    color: "#d300c1",
     zIndex: 10,
-    top: "50%",
+    right: "0%",
+    marginRight: "1rem",
+    // position: "relative",
+    // color: "#d300c1",
+    // zIndex: 10,
+    // top: "50%",
     // [theme.breakpoints.up("lg")]: {
     //   position: "relative",
     //   "&:hover": {
