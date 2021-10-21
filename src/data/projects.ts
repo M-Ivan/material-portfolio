@@ -18,16 +18,7 @@ export const projects = [
     demoUrl: "https://bullson.herokuapp.com",
     type: "Red social",
   },
-  {
-    title: "Buscador de pasajes",
-    images: ["/images/projects/buscador/buscadorPasajes.png"],
-    stack: "React (M-UI) / MongoDB / Express",
-    description:
-      "Proyecto que hace request a una API REST y devuelve una lista de pasajes que cumplan con los requisitos solicitados.",
-    repoUrl: "https://github.com/M-Ivan/Buscador-de-pasajes",
-    demoUrl: "https://buscadorpasajes.herokuapp.com/",
-    type: "Request a DB desde cliente",
-  },
+
   {
     title: "AmLibre",
     images: ["/images/projects/e-commerce/E-commerce.png"],
@@ -39,16 +30,47 @@ export const projects = [
     type: "E-Commerce",
   },
   {
-    title: "Restaurante",
-    images: [
-      "/images/projects/restaurante/reactstaurante.png",
-      "/images/projects/restaurante/reactstaurante 2.png",
-    ],
-    stack: "React (ReactStrap) / MongoDB / Express",
+    title: "Buscador de pasajes",
+    images: ["/images/projects/buscador/buscadorPasajes.png"],
+    stack: "React (M-UI) / MongoDB / Express",
     description:
-      "Aplicación con backend incluido que ofrece un menu, configuracion, lista de platos y demás a los usuarios en una sola pagina, ya que se trata de una SPA.",
-    repoUrl: "https://github.com/M-Ivan/Restaurante",
-    demoUrl: "https://reactstaurant.herokuapp.com",
-    type: "App de comidas",
+      "Proyecto que hace request a una API REST y devuelve una lista de pasajes que cumplan con los requisitos solicitados.",
+    repoUrl: "https://github.com/M-Ivan/Buscador-de-pasajes",
+    demoUrl: "https://buscadorpasajes.herokuapp.com/",
+    type: "Request a DB desde cliente",
+  },
+  {
+    title: "Sistema de Gestion de Obras",
+    images: [
+      "/images/projects/sgo/site-details.png",
+      "/images/projects/sgo/key-register.png",
+      "/images/projects/sgo/sites.png",
+      "/images/projects/sgo/visitors-dashboard.png",
+      "/images/projects/sgo/visitor-details.png",
+      "/images/projects/sgo/collaborators.png",
+      "/images/projects/sgo/acreditation.png",
+      "/images/projects/sgo/reports.png",
+    ],
+    stack: "React (antd) / NestJS (express) / PostgreSQL",
+    description:
+      "Mi primer proyecto en una empresa, se trata de una app para Accefy, una startup de Cordoba que se especializa en poder gestionar accesos, cerraduras, y basicamente abrir puertas con el celular. El sistema de gestion de Obras ofrece una automatizacion al flujo de ingreso, egreso de un lugar especifico, dejando un registro de cada ingreso / egreso efectuado por un colaborador. Los visitantes, solo podran ingresar a los sitios para los que tengan llaves, y por los accesos que permitan esa llave. La app esta por salir a produccion, las imagenes son del ambiente de testing. ",
+    type: "Gestion",
+  },
+  {
+    title: "Landing page base",
+    images: [
+      "/images/projects/landing-test/header.png",
+      "/images/projects/landing-test/about.png",
+      "/images/projects/landing-test/projects.png",
+      "/images/projects/landing-test/project-detail.png",
+      "/images/projects/landing-test/team.png",
+      "/images/projects/landing-test/contact.png",
+    ],
+    stack: "React (mui)",
+    repoUrl: "https://github.com/M-Ivan/Landing-Page",
+    demoUrl: "https://landingtestdev.herokuapp.com",
+    description:
+      "Proyecto base de una landing page, esta pensado para ser utilizado 'out of the box', es decir, clonas el repo, cargas tu data en el file de los datos y ya tenes una landing-page, hace falta revisitar el codigo pero esta bastante prolijo. La deuda tecnica mas grande que tiene este proyecto es la pendiente migracion a TypeScript.",
+    type: "Landing Page",
   },
 ];

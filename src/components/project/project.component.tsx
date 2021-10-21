@@ -23,6 +23,8 @@ import {
 import { Box } from "@mui/system";
 import { projectStyles as classes } from "components/project/project.styles";
 import { RalewayTypography } from "global.styles";
+import { globalStyles as globalClasses } from "global.styles";
+import { useTranslator } from "tools/view-hooks/translator-hook";
 
 export interface ProjectProps {
   title: string;
@@ -30,8 +32,8 @@ export interface ProjectProps {
   description: string;
   images: string[];
   type: string;
-  repoUrl: string;
-  demoUrl: string;
+  repoUrl?: string;
+  demoUrl?: string;
   animation: boolean;
 }
 
@@ -48,11 +50,12 @@ const Project: React.FC<ProjectProps> = (props) => {
     animation,
   } = props;
 
+  const { translate } = useTranslator();
+
   const [showBox, setShowBox] = useState<boolean>(false);
   const [isDetailsModalVisible, setIsDetailsModalVisible] =
     useState<boolean>(false);
   const [current, setCurrent] = useState<number>(0);
-  // TODO: Copiar el modal del otro proyecto
 
   const handleForward = () => {
     setCurrent(current + 1);
@@ -67,25 +70,16 @@ const Project: React.FC<ProjectProps> = (props) => {
     }
   };
 
-  console.log("current", current);
-
   const body = (
     <Grow in={isDetailsModalVisible} {...{ timeout: 400 }}>
       <Grid
         container
-        justifyContent="center"
         component="div"
         sx={{
           ...classes.modal,
-          // position: "absolute",
+          position: "relative",
         }}
       >
-        <IconButton
-          sx={{ ...classes.close, position: "absolute" }}
-          onClick={() => setIsDetailsModalVisible(!isDetailsModalVisible)}
-        >
-          <Close />
-        </IconButton>
         <Grid item xs={12} md={9}>
           <CardMedia
             component="div"
@@ -99,14 +93,17 @@ const Project: React.FC<ProjectProps> = (props) => {
                   container
                   component="div"
                   justifyContent="space-between"
-                  style={{ height: "90%" }}
+                  style={{ height: "100%" }}
                 >
-                  <IconButton onClick={handleBack} sx={{ ...classes.back }}>
+                  <IconButton
+                    onClick={handleBack}
+                    sx={{ ...classes.directionButton, left: "0%" }}
+                  >
                     <ArrowBackIos />
                   </IconButton>
                   <IconButton
                     onClick={handleForward}
-                    sx={{ ...classes.forward }}
+                    sx={{ ...classes.directionButton, right: "0%" }}
                   >
                     <ArrowForwardIos />
                   </IconButton>
@@ -118,20 +115,24 @@ const Project: React.FC<ProjectProps> = (props) => {
                 alignItems="flex-end"
                 justifyContent="flex-end"
               >
-                <Button
-                  href={demoUrl}
-                  sx={{ ...classes.modalBtn, position: "relative" }}
-                >
-                  Demo
-                  <Launch />
-                </Button>
-                <Button
-                  href={repoUrl}
-                  sx={{ ...classes.modalBtn, position: "relative" }}
-                >
-                  Repo
-                  <GitHub />
-                </Button>
+                {demoUrl && (
+                  <Button
+                    href={demoUrl}
+                    sx={{ ...classes.modalBtn, position: "relative" }}
+                  >
+                    {translate({ key: "general.demo" })}
+                    <Launch />
+                  </Button>
+                )}
+                {repoUrl && (
+                  <Button
+                    href={repoUrl}
+                    sx={{ ...classes.modalBtn, position: "relative" }}
+                  >
+                    {translate({ key: "general.repo" })}
+                    <GitHub />
+                  </Button>
+                )}
               </Grid>
             </Grid>
           </CardMedia>
@@ -141,88 +142,105 @@ const Project: React.FC<ProjectProps> = (props) => {
           xs={12}
           md={3}
           style={{
-            padding: "2rem",
+            display: "grid",
           }}
         >
-          <RalewayTypography
-            variant="h4"
-            gutterBottom
-            sx={{ ...classes.nombre }}
-          >
-            {title}
-          </RalewayTypography>
-          <RalewayTypography
-            variant="subtitle1"
-            color="textSecondary"
-            gutterBottom
-            style={{
-              fontWeight: 600,
-              textTransform: "uppercase",
-              alignSelf: "flex-start",
-            }}
-          >
-            {type}
-          </RalewayTypography>
-          <Divider />
+          <Grid container direction="column" sx={{ padding: "2rem" }}>
+            <RalewayTypography
+              variant="h4"
+              gutterBottom
+              sx={{ ...classes.nombre }}
+            >
+              {title}
+            </RalewayTypography>
+            <RalewayTypography
+              variant="subtitle1"
+              color="textSecondary"
+              gutterBottom
+              style={{
+                fontWeight: 600,
+                textTransform: "uppercase",
+                alignSelf: "flex-start",
+              }}
+            >
+              {type}
+            </RalewayTypography>
 
-          <RalewayTypography variant="body1">{description}</RalewayTypography>
+            <Divider />
+            <RalewayTypography variant="body1">{description}</RalewayTypography>
+          </Grid>
+          <IconButton
+            sx={{
+              ...classes.close,
+              ...globalClasses.onlyMobile,
+            }}
+            onClick={() => setIsDetailsModalVisible(!isDetailsModalVisible)}
+          >
+            <Close />
+          </IconButton>
         </Grid>
       </Grid>
     </Grow>
   );
 
   return (
-    <Grow in={animation}>
-      <Grid container>
-        <Card
-          elevation={0}
-          onMouseEnter={() => setShowBox(true)}
-          onMouseLeave={() => setShowBox(false)}
-          sx={{ ...classes.root }}
-        >
-          {!showBox ? (
-            <Slide direction="up" in={!showBox} {...{ timeout: 500 }}>
-              <CardActionArea onClick={() => setShowBox(true)}>
-                <CardMedia
-                  // Poner una imagen que respete las dimensiones siempre
-                  component="img"
-                  alt={title}
-                  height="300"
-                  width="400"
-                  image={images ? images[0] : undefined}
-                  title={title}
-                />
-              </CardActionArea>
-            </Slide>
-          ) : (
+    <Grid container sx={{ height: "100%" }}>
+      <Card
+        elevation={0}
+        onMouseEnter={() => setShowBox(true)}
+        onMouseLeave={() => setShowBox(false)}
+        sx={classes.root}
+      >
+        {!showBox ? (
+          <Slide direction="up" in={!showBox} {...{ timeout: 500 }}>
+            <CardActionArea onClick={() => setShowBox(true)}>
+              <CardMedia
+                component="img"
+                alt={title}
+                sx={{ height: "100%" }}
+                image={images ? images[0] : undefined}
+                title={title}
+              />
+            </CardActionArea>
+          </Slide>
+        ) : (
+          <Grid container sx={{ ...classes.detailsBox, position: "relative" }}>
             <Fade in={showBox} {...{ timeout: 800 }}>
-              <Grid container sx={{ ...classes.detailsBox }}>
-                <Grid item xs={12}>
-                  <Box sx={{ ...classes.nameBox, textAlign: "center" }}>
-                    <span style={{ ...classes.nombre }}>{title}</span> <br />
-                    <span style={{ ...classes.tecnologias }}>{stack}</span>
-                  </Box>
-                  <Grid component="div" container justifyContent="center">
-                    <Button
-                      onClick={() => setIsDetailsModalVisible(true)}
-                      sx={{ ...classes.button }}
-                    >
-                      Más Info <Subject />
-                    </Button>
-                  </Grid>
-                </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  position: "absolute",
+                  textAlign: "center",
+                  ...classes.detailsContainer,
+                }}
+              >
+                <Box>
+                  <RalewayTypography sx={{ ...classes.nombre }}>
+                    {title}
+                  </RalewayTypography>
+                  <RalewayTypography sx={{ ...classes.tecnologias }}>
+                    {stack}
+                  </RalewayTypography>
+                  <Button
+                    onClick={() => setIsDetailsModalVisible(true)}
+                    sx={{ ...classes.button }}
+                  >
+                    {translate({ key: "general.more-info" })} <Subject />
+                  </Button>
+                </Box>
               </Grid>
             </Fade>
-          )}
-        </Card>
-        <Modal
-          open={isDetailsModalVisible}
-          onClose={() => setIsDetailsModalVisible(false)}
-        >
-          {body}
-        </Modal>
-      </Grid>
-    </Grow>
+          </Grid>
+        )}
+      </Card>
+      <Modal
+        open={isDetailsModalVisible}
+        onClose={() => setIsDetailsModalVisible(false)}
+      >
+        {body}
+      </Modal>
+    </Grid>
   );
 };
 

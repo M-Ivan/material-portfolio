@@ -27,21 +27,15 @@ export const aboutMeStyles = {
     height: "100%",
     padding: "1rem 10% 1rem 10%",
     justifyContent: "center",
-    // [theme.breakpoints?.up("md")]: {
-    //   padding: "1rem 20% 1rem 20%",
-    // },
   },
   descriptionText: {
     fontSize: "1.2rem",
     color: "#3d3d3d",
     padding: "0 0rem 2rem 0",
-    //textAlign: "center",
   },
   title: {
     fontWeight: "bold",
     padding: "2rem 0 1rem 0",
-    //  textAlign: "center",
-    // textTransform: "uppercase",
     display: "inline-block",
     textDecoration: "none",
     backgroundImage: "radial-gradient(circle, #ff9100, #d31ec0)",
@@ -57,8 +51,8 @@ export const aboutMeStyles = {
     color: "#d300c1",
   },
 
-  skillArea: {
-    padding: "3rem 1rem",
+  mainSkillContainer: {
+    padding: { xs: "1rem", md: "3rem 1rem" },
   },
 
   skillText: {

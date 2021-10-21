@@ -2,15 +2,16 @@ import React from "react";
 import { portfolioStyles as classes } from "fragments/portfolio/portfolio.styles";
 import { PortfolioFragmentProps } from "fragments/portfolio/interfaces";
 import { usePortfolioController } from "fragments/portfolio/portfolio.controller";
-import { Grid, Slide, Typography } from "@mui/material";
-import { RalewayTypography } from "global.styles";
+import { Grid, Grow, Slide, Typography } from "@mui/material";
 import Project from "components/project/project.component";
 import { projects } from "data/projects";
 import { useAnimationContext } from "context/animations.context";
+import { useTranslator } from "tools/view-hooks/translator-hook";
 
 export const PortfolioFragment: React.FC<PortfolioFragmentProps> = (props) => {
   const { useController = usePortfolioController } = props;
   const controller = useController();
+  const { translate } = useTranslator();
   const { portfolioAnimation, folio } = useAnimationContext();
   const folioSection: any = folio;
 
@@ -41,7 +42,7 @@ export const PortfolioFragment: React.FC<PortfolioFragmentProps> = (props) => {
                   textTransform: "uppercase",
                 }}
               >
-                Proyectos
+                {translate({ key: "portfolio.title" })}
               </Typography>
             </Grid>
           </Slide>

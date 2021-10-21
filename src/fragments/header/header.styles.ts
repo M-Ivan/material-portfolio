@@ -43,5 +43,6 @@ export const HeaderStyles = {
     width: "30px",
     height: "30px",
     marginLeft: "0.5rem",
+    transition: "0.5s",
   },
 };

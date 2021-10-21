@@ -1,26 +1,28 @@
+import { useState } from "react";
+import {
+  AvailabilityType,
+  ContactController,
+} from "fragments/contact/interfaces";
 
+export const useContactController = (): ContactController => {
+  /* State */
 
-import { useState } from 'react';
-import { ContactController } from 'fragments/contact/interfaces';
+  const [availability, setAvailability] = useState<AvailabilityType>(
+    AvailabilityType.PartTime
+  );
 
-export const useContactController = (): /* <--Dependency Injections  like services hooks */
-ContactController => {
-    /* State */
-    // Ex. const [count, setCount] = useState(0);
-    const [example, setExample] = useState('example');
+  /* Listeners */
+  // Ex. useEffect(() => { onSessionUpdate(); }, [session]);
 
-    /* Listeners */
-    // Ex. useEffect(() => { onSessionUpdate(); }, [session]);
+  /* View Events */
+  //Ex. const onIncreaseButtonPressed = () => {}
+  const onButtonPressed = () => {
+    // Example event
+  };
 
-    /* View Events */
-    //Ex. const onIncreaseButtonPressed = () => {}
-    const onButtonPressed = () => {
-        // Example event
-    };
+  /* Private Methods */
+  //Ex. const increaseCount = () => {}
 
-    /* Private Methods */
-    //Ex. const increaseCount = () => {}
-
-    // Return state and events
-    return { example, onButtonPressed };
+  // Return state and events
+  return { availability, onButtonPressed };
 };

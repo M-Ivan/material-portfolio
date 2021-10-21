@@ -1,0 +1,37 @@
+{
+  "general": {
+    "more-info": "Mas info",
+    "repo": "Repo",
+    "demo": "Demo"
+  },
+  "nav": {
+    "header": "Inicio",
+    "about": "Sobre mí",
+    "portfolio": "Proyectos",
+    "contact": "Contacto"
+  },
+  "header": {
+    "title": "IVÁN MIRAGAYA",
+    "subtitle": "FullStack Developer",
+    "button-about": "Mis trabajos"
+  },
+  "aboutme": {
+    "title": "Sobre mí",
+    "profile-subtitle": "¿Quién soy?",
+    "profile-description": "Soy un developer de 21 años con gran pasión por la creación de aplicaciones complejas y responsive. Me gustan los desafios por lo que busco siempre superarme dando lo mejor de mí cada dia.",
+    "profile-description-extra": "Actualmente trabajo como",
+    "button-downloadCv": "Descargar CV"
+  },
+  "portfolio": {
+    "title": "Proyectos",
+    "button-learnMore": "Más Info",
+    "button-demo": "Demo",
+    "button-repo": "Repo"
+  },
+  "contact": {
+    "title": "Contacto",
+    "availability-body": "En este momento me encuentro",
+    "contact-subtitle": "Tenés una consulta o querés que trabajemos juntos?",
+    "button-launchpad": "Creemos algo increible"
+  }
+}

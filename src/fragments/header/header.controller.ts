@@ -8,6 +8,8 @@ export const useHeaderController = (): HeaderController => {
   const [rotate, setRotate] = useState(false);
   const { about } = useAnimationContext();
 
+  console.log("rotate", rotate);
+
   /* Listeners */
   // Ex. useEffect(() => { onSessionUpdate(); }, [session]);
 

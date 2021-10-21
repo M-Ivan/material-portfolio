@@ -3,8 +3,9 @@ import { createTheme, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/private-theming";
 import AnimationProvider from "context/animations-provider";
 import { MainFragment } from "fragments/main/main.fragment";
+import "tools/i18n/i18n";
 
-const App = (props: any) => {
+const App = () => {
   const theme = createTheme({
     palette: {
       mode: "dark",

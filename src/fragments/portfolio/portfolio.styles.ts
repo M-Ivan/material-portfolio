@@ -4,11 +4,9 @@ export const portfolioStyles = {
     backgroundColor: "#3f3f3f",
     color: "#fff",
     minHeight: "100vh",
-    fontFamily: "Work Sans",
   },
   portafolio: {
-    padding: "1rem 10% 1rem 10%",
-    justifyContent: "center",
+    padding: "10vh 0",
   },
   title: {
     fontWeight: "bold",
@@ -34,7 +32,7 @@ export const portfolioStyles = {
     marginTop: "5rem",
     display: "flex",
     alignItems: "center",
-    justifyContent: "",
+    justifyContent: "center",
   },
   proyectAreaBox: {
     alignItems: "center",

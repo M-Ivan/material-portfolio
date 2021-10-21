@@ -7,6 +7,7 @@ import { Button, Grid, Slide } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "fragments/header/header.scss";
 import { useAnimationContext } from "context/animations.context";
+import { useTranslator } from "tools/view-hooks/translator-hook";
 
 export const HeaderFragment: React.FC<HeaderFragmentProps> = (props) => {
   const { useController = useHeaderController } = props;
@@ -14,6 +15,7 @@ export const HeaderFragment: React.FC<HeaderFragmentProps> = (props) => {
 
   const { header, headerAnimation } = useAnimationContext();
   const headerSection: any = header;
+  const { translate } = useTranslator();
 
   // Render
   return (
@@ -27,7 +29,9 @@ export const HeaderFragment: React.FC<HeaderFragmentProps> = (props) => {
         <Grid item xs={12}>
           <Slide direction="left" in={headerAnimation} {...{ timeout: 2000 }}>
             <Box>
-              <h1 className="header accerleration">Iván Miragaya</h1>
+              <h1 className="header accerleration">
+                {translate({ key: "header.title" })}
+              </h1>
             </Box>
           </Slide>
         </Grid>
@@ -38,7 +42,9 @@ export const HeaderFragment: React.FC<HeaderFragmentProps> = (props) => {
         >
           <Slide direction="right" in={headerAnimation} {...{ timeout: 2000 }}>
             <Box>
-              <h2 className="sub-header accerleration">Web Developer</h2>
+              <h2 className="sub-header accerleration">
+                {translate({ key: "header.subtitle" })}
+              </h2>
             </Box>
           </Slide>{" "}
         </Grid>
@@ -60,9 +66,13 @@ export const HeaderFragment: React.FC<HeaderFragmentProps> = (props) => {
               onClick={controller.onNavigateToAboutButtonPressed}
               sx={{ ...classes.button }}
             >
-              Mis trabajos
+              {translate({ key: "header.button-about" })}
               <ArrowForwardIcon
-                sx={headerAnimation ? classes.iconAnim : classes.icon}
+                sx={
+                  controller.rotate
+                    ? { ...classes.iconAnim }
+                    : { ...classes.icon }
+                }
               />
             </Button>{" "}
           </Box>

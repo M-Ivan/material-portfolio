@@ -15,10 +15,20 @@ import BuildIcon from "@mui/icons-material/Build";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import "fragments/about-me/about-me.scss";
 import { skillsWithProgress } from "data/skills";
+import { useTranslator } from "tools/view-hooks/translator-hook";
+import { mainSkills } from "data/main-skills";
+import {
+  Build,
+  Code,
+  EmojiObjectsOutlined,
+  VerifiedUser,
+} from "@mui/icons-material";
+import { CURRENT_JOB_ES } from "data/constants";
 
 export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
   const { useController = useAboutMeController } = props;
   const controller = useController();
+  const { translate } = useTranslator();
 
   const { about, aboutAnimation } = useAnimationContext();
 
@@ -78,125 +88,56 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                 textTransform: "uppercase",
               }}
             >
-              Sobre mí
+              {translate({ key: "aboutme.title" })}
             </Typography>
           </Grid>
         </Slide>
-        <Grid container sx={{ ...classes.skillArea }}>
-          <Grid item xs={6} lg={3}>
-            <Slide
-              direction="right"
-              in={aboutAnimation}
-              {...(aboutAnimation ? { timeout: 1000 } : {})}
+        <Grid container>
+          {mainSkills.es.map((mainSkill, index) => (
+            <Grid
+              key={mainSkill.title}
+              item
+              xs={6}
+              lg={3}
+              sx={{ ...classes.mainSkillContainer }}
             >
-              <Grid container alignItems="center" direction="column">
-                <Grid className="hexagon-skill">
-                  <Grid
-                    container
-                    component={"div"}
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <CodeIcon sx={{ ...classes.skillIcon }} />
+              <Slide
+                direction="right"
+                in={aboutAnimation}
+                {...(aboutAnimation ? { timeout: 1000 } : {})}
+              >
+                <Grid container alignItems="center" direction="column">
+                  <Grid className="hexagon-skill">
+                    <Grid
+                      container
+                      component={"div"}
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      {index == 0 && <Code sx={{ ...classes.skillIcon }} />}
+                      {index == 1 && (
+                        <VerifiedUser sx={{ ...classes.skillIcon }} />
+                      )}
+                      {index == 2 && (
+                        <EmojiObjectsOutlined sx={{ ...classes.skillIcon }} />
+                      )}
+                      {index == 3 && <Build sx={{ ...classes.skillIcon }} />}
+                    </Grid>
                   </Grid>
-                </Grid>
-                <h2>Clean Coder</h2>
-                <Typography
-                  variant="body2"
-                  sx={{ textAlign: "center", fontSize: "1.1rem" }}
-                >
-                  Fiel a las revisiones de código. <br />
-                  Es escencial dejar todo lo mas facil de entender posible.
-                </Typography>
-              </Grid>
-            </Slide>
-          </Grid>
-          <Grid item xs={6} lg={3}>
-            <Slide
-              direction="right"
-              in={aboutAnimation}
-              {...(aboutAnimation ? { timeout: 1000 } : {})}
-            >
-              <Grid container alignItems="center" direction="column">
-                <Grid className="hexagon-skill">
-                  <Grid
-                    container
-                    component={"div"}
-                    justifyContent="center"
-                    alignItems="center"
+                  <h2 style={{ textAlign: "center" }}>{mainSkill.title}</h2>
+                  <Typography
+                    variant="body2"
+                    sx={{ textAlign: "center", fontSize: "1.1rem" }}
                   >
-                    <VerifiedUserIcon sx={{ ...classes.skillIcon }} />
-                  </Grid>
+                    {mainSkill.description}
+                  </Typography>
                 </Grid>
-                <h2 style={{ textAlign: "center" }}>Mentalidad Win/Win</h2>
-                <Typography
-                  variant="body2"
-                  sx={{ ...classes.skillText, textAlign: "center" }}
-                >
-                  Se profundiza lo que se sabe.
-                  <br />Y lo que no, se aprende.
-                </Typography>
-              </Grid>
-            </Slide>
-          </Grid>{" "}
-          <Grid item xs={6} lg={3}>
-            <Slide
-              direction="right"
-              in={aboutAnimation}
-              {...(aboutAnimation ? { timeout: 1000 } : {})}
-            >
-              <Grid container alignItems="center" direction="column">
-                <Grid className="hexagon-skill">
-                  <Grid
-                    container
-                    component={"div"}
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <EmojiObjectsOutlinedIcon sx={{ ...classes.skillIcon }} />
-                  </Grid>
-                </Grid>
-                <h2>Intuición</h2>
-                <Typography
-                  variant="body2"
-                  sx={{ ...classes.skillText, textAlign: "center" }}
-                >
-                  Partidario de la filosofía UX: <br />
-                  cuanto mas facil de usar, mejor.
-                </Typography>
-              </Grid>
-            </Slide>
-          </Grid>{" "}
-          <Grid item xs={6} lg={3}>
-            <Slide
-              direction="right"
-              in={aboutAnimation}
-              {...(aboutAnimation ? { timeout: 1000 } : {})}
-            >
-              <Grid container alignItems="center" direction="column">
-                <Grid className="hexagon-skill">
-                  <Grid
-                    container
-                    component={"div"}
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <BuildIcon sx={{ ...classes.skillIcon }} />
-                  </Grid>
-                </Grid>
-                <h2>Dedicación</h2>
-                <Typography
-                  variant="body2"
-                  sx={{ ...classes.skillText, textAlign: "center" }}
-                >
-                  En constante aprendizaje para mejorarme a mi mismo cada dia.
-                </Typography>
-              </Grid>
-            </Slide>
-          </Grid>
+              </Slide>
+            </Grid>
+          ))}
         </Grid>
         <Grid container>
-          <Grid item xs={12} lg={6} sx={{ padding: "3rem 1rem" }}>
+          <Grid item xs={12} lg={6} sx={{ padding: "1rem" }}>
             <Slide
               direction="right"
               in={aboutAnimation}
@@ -219,15 +160,16 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                   lg={9}
                   sx={{ ...classes.descriptionText, textAlign: "center" }}
                 >
-                  <h3>¿Quién soy?</h3>
+                  <h3>{translate({ key: "aboutme.profile-subtitle" })}</h3>
                   <Typography
                     variant="body2"
                     sx={{ ...classes.skillText, textAlign: "center" }}
                   >
-                    Soy un web developer de 21 años con gran pasión por la
-                    creación de aplicaciones funcionales y dinámicas. Me gustan
-                    los desafios por lo que busco siempre superarme dando lo
-                    mejor de mí en cada situación.
+                    {`${translate({
+                      key: "aboutme.profile-description",
+                    })} ${translate({
+                      key: "aboutme.profile-description-extra",
+                    })} ${CURRENT_JOB_ES}`}
                   </Typography>
                   <Button
                     href="/cv/CV2.pdf"
@@ -235,7 +177,7 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                     download
                   >
                     <GetAppIcon />
-                    <Hidden smDown>Descargar</Hidden> CV
+                    {translate({ key: "aboutme.button-downloadCv" })}
                   </Button>
                 </Grid>
               </Grid>
@@ -246,11 +188,11 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
             in={aboutAnimation}
             {...(aboutAnimation ? { timeout: 1000 } : {})}
           >
-            <Grid item xs={12} lg={6} sx={{ padding: "3rem 1rem" }}>
+            <Grid item xs={12} lg={6} sx={{ padding: "1rem" }}>
               <Grid
                 container
                 alignItems="center"
-                sx={{ height: { xs: "50vh", lg: "100%" } }}
+                sx={{ height: { xs: "70vh", lg: "100%" } }}
               >
                 {skillsWithProgress.map((skill) => (
                   <Grid key={skill.title} container alignItems="center">

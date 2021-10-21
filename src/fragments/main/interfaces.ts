@@ -1,10 +1,10 @@
 export interface MainController {
-    /* State */
-    example: string;
-    /* Events */
-    onButtonPressed: () => void;
+  /* State */
+  isScrollTopButtonVisible: boolean;
+  /* Events */
+  onScrollTopButtonPressed: () => void;
 }
 
 export interface MainFragmentProps {
-    useController?: () => MainController;
+  useController?: () => MainController;
 }

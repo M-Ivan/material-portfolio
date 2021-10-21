@@ -1,10 +1,16 @@
+export enum AvailabilityType {
+  FullTime = "Disponible, Full-Time",
+  PartTime = "Disponible, Part-Time",
+  Unavailable = "No disponible",
+}
+
 export interface ContactController {
-    /* State */
-    example: string;
-    /* Events */
-    onButtonPressed: () => void;
+  /* State */
+  availability: AvailabilityType;
+  /* Events */
+  onButtonPressed: () => void;
 }
 
 export interface ContactFragmentProps {
-    useController?: () => ContactController;
+  useController?: () => ContactController;
 }
