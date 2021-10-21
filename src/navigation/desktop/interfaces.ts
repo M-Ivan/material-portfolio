@@ -1,7 +1,7 @@
 import { SectionData } from "context/animations.context";
 import { MutableRefObject } from "react";
 
-export interface NavBarController {
+export interface DesktopNavBarController {
   /* State */
   header: MutableRefObject<SectionData | null>;
   about: MutableRefObject<SectionData | null>;
@@ -14,8 +14,11 @@ export interface NavBarController {
   gotoAbout: () => void;
   gotoFolio: () => void;
   gotoContact: () => void;
+  onMobileNavigationOpen: () => void;
+  onNavigationShrink: () => void;
+  onNavigationExpand: () => void;
 }
 
-export interface NavBarFragmentProps {
-  useController?: () => NavBarController;
+export interface DesktopNavBarFragmentProps {
+  useController?: () => DesktopNavBarController;
 }

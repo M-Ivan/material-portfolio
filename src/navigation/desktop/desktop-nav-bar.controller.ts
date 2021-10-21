@@ -1,19 +1,19 @@
-import { useEffect, useLayoutEffect, useState } from "react";
-import { NavBarController } from "fragments/nav-bar/interfaces";
+import { useEffect, useState } from "react";
 import { useWindowScroll } from "react-use";
 import { useAnimationContext } from "context/animations.context";
+import { DesktopNavBarController } from "navigation/desktop/interfaces";
+import { useNavigationContext } from "navigation/context/navigation.context";
+import { NavigationType } from "navigation/nav-component/interface";
 
-export const useNavBarController = (): NavBarController => {
+export const useDesktopNavBarController = (): DesktopNavBarController => {
   /* State */
 
   const { y: pageYOffset } = useWindowScroll();
   const [isNavBarVisible, setIsNavBarVisible] = useState<boolean>(false);
 
   const { header, about, folio, contact } = useAnimationContext();
-
-  const handleParentCallback = () => {
-    // setOpen((prev) => !prev);
-  };
+  const { setIsMobileNavigationOpen, setNavigationType } =
+    useNavigationContext();
 
   /* Listeners */
   useEffect(() => {
@@ -51,6 +51,17 @@ export const useNavBarController = (): NavBarController => {
     });
   };
 
+  const onMobileNavigationOpen = () => {
+    setIsMobileNavigationOpen(true);
+  };
+
+  const onNavigationShrink = () => {
+    setNavigationType(NavigationType.Mobile);
+  };
+  const onNavigationExpand = () => {
+    setNavigationType(NavigationType.Desktop);
+  };
+
   /* Private Methods */
 
   // Return state and events
@@ -64,5 +75,8 @@ export const useNavBarController = (): NavBarController => {
     gotoAbout,
     gotoFolio,
     gotoContact,
+    onMobileNavigationOpen,
+    onNavigationShrink,
+    onNavigationExpand,
   };
 };

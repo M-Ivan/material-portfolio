@@ -172,7 +172,7 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                     })} ${CURRENT_JOB_ES}`}
                   </Typography>
                   <Button
-                    href="/cv/CV2.pdf"
+                    href="/documents/CV3.pdf"
                     sx={{ ...classes.button }}
                     download
                   >
