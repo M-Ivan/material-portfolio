@@ -3,17 +3,17 @@ export const mainSkills = {
     {
       title: "Clean Coder",
       description:
-        "Seguidor de buenas practicas como Clean Code / Clean Architecture.",
+        "Seguidor de buenas practicas como Clean Code / Clean Architecture. A menos que comprometa lo pactado, siempre estoy arreglando mi codigo.",
     },
     {
       title: "Mentalidad Win/Win",
       description:
-        "Optimista. No hay desafio suficientemente dificil, todo es posible.",
+        "Optimista. No hay desafio suficientemente dificil, todo es posible. Ademas, lo que no se sabe se aprende.",
     },
     {
       title: "Intuitivo",
       description:
-        "Al trabajar en frontend, los principios de UI / UX son mi brujula.",
+        "Al trabajar en frontend, los principios de UI / UX son mi brujula. El producto debe poder ser utilizado sin hacer una capacitacion. ",
     },
     {
       title: "Performante",

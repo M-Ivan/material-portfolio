@@ -39,23 +39,23 @@ export const projects = [
     demoUrl: "https://buscadorpasajes.herokuapp.com/",
     type: "Request a DB desde cliente",
   },
-  {
-    title: "Sistema de Gestion de Obras",
-    images: [
-      "/images/projects/sgo/site-details.png",
-      "/images/projects/sgo/key-register.png",
-      "/images/projects/sgo/sites.png",
-      "/images/projects/sgo/visitors-dashboard.png",
-      "/images/projects/sgo/visitor-details.png",
-      "/images/projects/sgo/collaborators.png",
-      "/images/projects/sgo/acreditation.png",
-      "/images/projects/sgo/reports.png",
-    ],
-    stack: "React (antd) / NestJS (express) / PostgreSQL",
-    description:
-      "Mi primer proyecto en una empresa, se trata de una app para Accefy, una startup de Cordoba que se especializa en poder gestionar accesos, cerraduras, y basicamente abrir puertas con el celular. El sistema de gestion de Obras ofrece una automatizacion al flujo de ingreso, egreso de un lugar especifico, dejando un registro de cada ingreso / egreso efectuado por un colaborador. Los visitantes, solo podran ingresar a los sitios para los que tengan llaves, y por los accesos que permitan esa llave. La app esta por salir a produccion, las imagenes son del ambiente de testing. ",
-    type: "Gestion",
-  },
+  // {
+  //   title: "Sistema de Gestion de Obras",
+  //   images: [
+  //     "/images/projects/sgo/site-details.png",
+  //     "/images/projects/sgo/key-register.png",
+  //     "/images/projects/sgo/sites.png",
+  //     "/images/projects/sgo/visitors-dashboard.png",
+  //     "/images/projects/sgo/visitor-details.png",
+  //     "/images/projects/sgo/collaborators.png",
+  //     "/images/projects/sgo/acreditation.png",
+  //     "/images/projects/sgo/reports.png",
+  //   ],
+  //   stack: "React (antd) / NestJS (express) / PostgreSQL",
+  //   description:
+  //     "Mi primer proyecto en una empresa, se trata de una app para Accefy, una startup de Cordoba que se especializa en poder gestionar accesos, cerraduras, y basicamente abrir puertas con el celular. El sistema de gestion de Obras ofrece una automatizacion al flujo de ingreso, egreso de un lugar especifico, dejando un registro de cada ingreso / egreso efectuado por un colaborador. Los visitantes, solo podran ingresar a los sitios para los que tengan llaves, y por los accesos que permitan esa llave. La app esta por salir a produccion, las imagenes son del ambiente de testing. ",
+  //   type: "Gestion",
+  // },
   {
     title: "Landing page base",
     images: [
