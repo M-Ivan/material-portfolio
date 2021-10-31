@@ -16,7 +16,7 @@ import { ArrowBack, ArrowBackSharp, ArrowForward } from "@mui/icons-material";
 import { useNavigationContext } from "navigation/context/navigation.context";
 import { NavigationType } from "navigation/nav-component/interface";
 import { Box } from "@mui/system";
-import { globalStyles } from "global.styles";
+import { globalStyles } from "theming/global.styles";
 
 export const DesktopNavBarFragment: React.FC<DesktopNavBarFragmentProps> = (
   props

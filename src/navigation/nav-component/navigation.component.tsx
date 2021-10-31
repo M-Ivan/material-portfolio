@@ -8,8 +8,6 @@ import React from "react";
 export const NavigationComponent: React.FC = () => {
   const { isMobileNavigationOpen } = useNavigationContext();
 
-  console.log("open", isMobileNavigationOpen);
-
   return (
     <Box>
       {isMobileNavigationOpen && <MobileNavigationFragment />}

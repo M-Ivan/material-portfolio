@@ -4,11 +4,21 @@ export enum AvailabilityType {
   Unavailable = "No disponible",
 }
 
+export interface SendMailFormInterface {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 export interface ContactController {
   /* State */
   availability: AvailabilityType;
+  isSuccessNotificacionVisible: boolean;
+  isErrorNotificacionVisible: boolean;
   /* Events */
-  onButtonPressed: () => void;
+  onSendContactForm: (data: unknown, e) => void;
+  onCloseNotification: () => void;
 }
 
 export interface ContactFragmentProps {

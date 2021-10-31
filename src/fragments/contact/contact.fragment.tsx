@@ -1,30 +1,28 @@
 import React from "react";
 import { contactStyles as classes } from "fragments/contact/contact.styles";
-import {
-  AvailabilityType,
-  ContactFragmentProps,
-} from "fragments/contact/interfaces";
+import { ContactFragmentProps } from "fragments/contact/interfaces";
 import { useContactController } from "fragments/contact/contact.controller";
 import {
   Button,
-  Collapse,
   Grid,
   Grow,
   IconButton,
-  Link,
-  Slide,
+  FormControl,
   Typography,
+  Slide,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { useAnimationContext } from "context/animations.context";
-import { RalewayTypography } from "global.styles";
 import {
-  Call,
-  Email,
-  GitHub,
-  LaunchOutlined,
-  LinkedIn,
-} from "@mui/icons-material";
+  globalStyles,
+  SecondaryTextField,
+  RalewayTypography,
+} from "theming/global.styles";
+import { GitHub, LinkedIn, Send } from "@mui/icons-material";
 import { Box } from "@mui/system";
+import { useForm } from "react-hook-form";
+import { useTranslator } from "tools/view-hooks/translator-hook";
 
 export const ContactFragment: React.FC<ContactFragmentProps> = (props) => {
   const { useController = useContactController } = props;
@@ -32,15 +30,32 @@ export const ContactFragment: React.FC<ContactFragmentProps> = (props) => {
 
   const { contact, contactAnimation } = useAnimationContext();
   const contactSection: any = contact;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { translate } = useTranslator();
+
+  const { ref: nameInputRef, ...nameInputProps } = register("name", {
+    required: "Este campo es obligatorio",
+  });
+
+  const { ref: subjectInputRef, ...subjectInputProps } = register("subject", {
+    required: "Este campo es obligatorio",
+  });
+
+  const { ref: emailInputRef, ...emailInputProps } = register("email", {
+    required: "Este campo es obligatorio",
+  });
+  const { ref: messageInputRef, ...messageInputProps } = register("message", {
+    required: "Este campo es obligatorio",
+  });
 
   // Render
   return (
-    <Grid
-      container
-      alignItems="flex-end"
-      sx={{ ...classes.root }}
-      ref={contactSection}
-    >
+    <Grid container sx={classes.root} ref={contactSection}>
       <Grow
         in={contactAnimation}
         {...(contactAnimation ? { timeout: 1000 } : {})}
@@ -54,112 +69,116 @@ export const ContactFragment: React.FC<ContactFragmentProps> = (props) => {
               textTransform: "uppercase",
             }}
           >
-            Contacto
+            {translate({ key: "contact.title" })}
           </Typography>
         </Grid>
       </Grow>
+      <Slide
+        direction="left"
+        in={contactAnimation}
+        {...(contactAnimation ? { timeout: 1000 } : {})}
+      >
+        <Grid container justifyContent="center">
+          <RalewayTypography
+            variant="h4"
+            sx={{ ...classes.subtitle, textAlign: "center" }}
+          >
+            {translate({ key: "contact.subtitle" })}
+          </RalewayTypography>
+        </Grid>
+      </Slide>
       <Grid container sx={{ ...classes.contact, textAlign: "center" }}>
-        <Grow
-          in={contactAnimation}
-          {...(contactAnimation ? { timeout: 1000 } : {})}
+        <form
+          onSubmit={handleSubmit(controller.onSendContactForm)}
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          <Grid container sx={classes.card}>
-            <Grid item xs={12}>
-              <RalewayTypography variant="h6" sx={classes.cardText}>
-                {" "}
-                En este momento me encuentro:
-              </RalewayTypography>
-            </Grid>
-            <Grid item xs={12}>
-              <RalewayTypography
-                variant="subtitle1"
+          <Grid
+            container
+            direction="column"
+            rowGap={0}
+            sx={{ width: { xs: "100%", lg: "25%" } }}
+          >
+            <SecondaryTextField
+              inputRef={nameInputRef}
+              required
+              label={translate({ key: "label.name" })}
+              error={!!errors.name}
+              helperText={errors?.name?.message}
+              variant={"filled"}
+              {...nameInputProps}
+              fullWidth
+              color="secondary"
+            />
+            <SecondaryTextField
+              inputRef={subjectInputRef}
+              required
+              label={translate({ key: "label.subject" })}
+              error={!!errors.subject}
+              helperText={errors?.subject?.message}
+              variant={"filled"}
+              {...subjectInputProps}
+              fullWidth
+              color="secondary"
+            />{" "}
+            <SecondaryTextField
+              inputRef={emailInputRef}
+              required
+              label={translate({ key: "label.email" })}
+              error={!!errors.email}
+              helperText={errors?.email?.message}
+              variant={"filled"}
+              {...emailInputProps}
+              fullWidth
+              color="secondary"
+            />{" "}
+            <SecondaryTextField
+              inputRef={messageInputRef}
+              required
+              label={translate({ key: "label.message" })}
+              error={!!errors.message}
+              helperText={errors?.message?.message}
+              variant={"filled"}
+              {...messageInputProps}
+              multiline
+              rows={3}
+              fullWidth
+              color="secondary"
+            />{" "}
+            <FormControl
+              sx={{
+                alignItems: "flex-end",
+              }}
+            >
+              <Button
                 sx={{
-                  ...classes.available,
-                  color:
-                    controller.availability === AvailabilityType.FullTime
-                      ? "#00b62e"
-                      : controller.availability === AvailabilityType.PartTime
-                      ? "#ffbb00"
-                      : "#ff0000",
-                  textTransform: "uppercase",
+                  ...globalStyles.buttonOutlinedSecondary,
+                  marginTop: "1rem",
+                  width: { xs: "100%", lg: "150px" },
                 }}
+                endIcon={<Send />}
+                type="submit"
               >
-                {controller.availability}
-              </RalewayTypography>{" "}
-            </Grid>
+                {translate({ key: "general.send" })}
+              </Button>
+            </FormControl>
           </Grid>
-        </Grow>
-        <Slide
-          direction="left"
-          in={contactAnimation}
-          {...(contactAnimation ? { timeout: 1000 } : {})}
-        >
-          <Grid item xs={12}>
-            <RalewayTypography variant="h4" sx={classes.subtitle}>
-              Tenés una consulta o querés que trabajemos juntos?
-            </RalewayTypography>
-          </Grid>
-        </Slide>
-
-        <Grid item xs={12} lg={3}>
-          <Collapse
-            in={contactAnimation}
-            {...(contactAnimation ? { timeout: 1000 } : {})}
-          >
-            <Email sx={classes.typeIcon} />{" "}
-            <RalewayTypography variant="subtitle1">
-              <Link
-                id="mail"
-                sx={classes.contactLink}
-                underline="none"
-                href="mailto:MiragayaIvan@hotmail.com"
-              >
-                <strong>MiragayaIvan@hotmail.com</strong>
-              </Link>
-            </RalewayTypography>
-          </Collapse>
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <Collapse
-            in={contactAnimation}
-            {...(contactAnimation ? { timeout: 1000 } : {})}
-          >
-            <Call sx={classes.typeIcon} />
-            <Typography variant="subtitle1" component="h3">
-              <Link
-                sx={classes.contactLink}
-                underline="none"
-                href="tel:+541127677832"
-              >
-                <strong>11-2767-7832</strong>{" "}
-              </Link>{" "}
-            </Typography>{" "}
-          </Collapse>
-        </Grid>
-        <Slide
-          direction="right"
-          in={contactAnimation}
-          {...(contactAnimation ? { timeout: 1000 } : {})}
-        >
-          <Grid item xs={12}>
-            <Button href="mailto:MiragayaIvan@hotmail.com" sx={classes.button}>
-              Creemos algo increible{" "}
-              <LaunchOutlined style={{ marginLeft: "1vw" }} />
-            </Button>
-          </Grid>
-        </Slide>
+        </form>
       </Grid>
+
       <Grid container sx={{ ...classes.footer }}>
         <IconButton
           href="https://www.linkedin.com/in/miragaya-ivan/"
           sx={classes.mediaButton}
         >
-          {" "}
           <LinkedIn sx={classes.icon} />
-        </IconButton>{" "}
+        </IconButton>
         <IconButton href="https://github.com/m-ivan" sx={classes.mediaButton}>
           <GitHub sx={classes.icon} />
-        </IconButton>{" "}
+        </IconButton>
         <Grid item xs={12}>
           <Box>
             <RalewayTypography
@@ -176,6 +195,34 @@ export const ContactFragment: React.FC<ContactFragmentProps> = (props) => {
           </Box>
         </Grid>
       </Grid>
+      <Snackbar
+        open={controller.isSuccessNotificacionVisible}
+        autoHideDuration={6000}
+        onClose={controller.onCloseNotification}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={controller.onCloseNotification}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {translate({ key: "notifications.email-success" })}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={controller.isErrorNotificacionVisible}
+        autoHideDuration={6000}
+        onClose={controller.onCloseNotification}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={controller.onCloseNotification}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {translate({ key: "notifications.email-error" })}
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 };

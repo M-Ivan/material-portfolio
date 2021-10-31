@@ -2,7 +2,8 @@
   "general": {
     "more-info": "Mas info",
     "repo": "Repo",
-    "demo": "Demo"
+    "demo": "Demo",
+    "send": "Enviar"
   },
   "nav": {
     "header": "Inicio",
@@ -31,7 +32,16 @@
   "contact": {
     "title": "Contacto",
     "availability-body": "En este momento me encuentro",
-    "contact-subtitle": "Tenés una consulta o querés que trabajemos juntos?",
-    "button-launchpad": "Creemos algo increible"
+    "subtitle": "Tenés una consulta o querés que trabajemos juntos?"
+  },
+  "label": {
+    "subject": "Asunto",
+    "name": "Nombre",
+    "message": "Mensaje",
+    "Email": "E-mail"
+  },
+  "notifications": {
+    "email-success": "Email enviado",
+    "email-error": "Ocurrio un error al intentar enviar el mail"
   }
 }

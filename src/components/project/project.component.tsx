@@ -22,8 +22,8 @@ import {
 } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { projectStyles as classes } from "components/project/project.styles";
-import { RalewayTypography } from "global.styles";
-import { globalStyles as globalClasses } from "global.styles";
+import { RalewayTypography } from "theming/global.styles";
+import { globalStyles as globalClasses } from "theming/global.styles";
 import { useTranslator } from "tools/view-hooks/translator-hook";
 
 export interface ProjectProps {
@@ -39,16 +39,7 @@ export interface ProjectProps {
 
 const Project: React.FC<ProjectProps> = (props) => {
   // State
-  const {
-    title,
-    stack,
-    description,
-    images,
-    type,
-    repoUrl,
-    demoUrl,
-    animation,
-  } = props;
+  const { title, stack, description, images, type, repoUrl, demoUrl } = props;
 
   const { translate } = useTranslator();
 

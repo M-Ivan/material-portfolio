@@ -3,9 +3,10 @@ export const contactStyles = {
     backgroundColor: "#1b1b1b",
     color: "#fff",
     minHeight: "100vh",
+    alignItems: "flex-end",
+    padding: { xs: "2rem 0 0 0", lg: "0" },
   },
   contact: {
-    height: "60vh",
     backgroundColor: "#1a1a1a",
     display: "flex",
     // textAlign: "center",
@@ -32,42 +33,15 @@ export const contactStyles = {
   subtitle: {
     color: "#00d4db",
     fontWeight: 600,
-    fontSize: { xs: "12pt", md: "24pt" },
-    // [theme.breakpoints.down("sm")]: {
-    //   fontSize: "12pt",
-    // },
+    fontSize: { xs: "12pt", md: "16pt" },
   },
 
-  button: {
-    width: { xs: "100%", md: "50%" },
-    border: "2px solid #03c2c9",
-    borderRadius: "0%",
-    color: "#fff",
-    padding: "1rem",
-    fontSize: { xs: "10pt", md: "12pt" },
-    transition: "0.6s",
-    "&:hover": {
-      backgroundColor: "#03c2c9",
-      color: "#1b1b1b",
-      fontWeight: 600,
-    },
-  },
-  contactLink: {
-    color: "#fff",
-    fontSize: "12pt",
-    transition: "0.6s",
-    "&:hover": {
-      color: "#ff9100",
-    },
-  },
-  typeIcon: {
-    color: "#808080",
-  },
   footer: {
     height: "15vh",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#19171d",
+    marginTop: "auto",
   },
   mediaButton: {
     width: "40px",
@@ -80,10 +54,6 @@ export const contactStyles = {
       color: "#fff",
       backgroundColor: "#03c2c9",
     },
-    // [theme.breakpoints.down("sm")]: {
-    //   width: "40px",
-    //   height: "40px",
-    // },
   },
   icon: {
     width: "30px",
@@ -98,22 +68,5 @@ export const contactStyles = {
   },
   watermarkColor: {
     color: "#d300c1",
-  },
-  card: {
-    borderRadius: "0%",
-    height: "12vh",
-    justifyContent: "center",
-    alignItems: "center",
-    width: { xs: "100%", md: "50%" },
-    backgroundColor: "#1e242c",
-    color: "#fff",
-  },
-  available: {
-    fontSize: { xs: "10pt", md: "15pt" },
-    letterSpacing: "2px",
-    fontWeight: 600,
-  },
-  cardText: {
-    fontSize: { xs: "11pt", md: "14pt" },
   },
 };

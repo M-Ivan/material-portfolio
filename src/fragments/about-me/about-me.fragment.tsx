@@ -7,11 +7,7 @@ import { AboutMeFragmentProps } from "fragments/about-me/interfaces";
 import { useAboutMeController } from "fragments/about-me/about-me.controller";
 import { useAnimationContext } from "context/animations.context";
 import { Box } from "@mui/system";
-import { Button, Grid, Hidden, Slide, Typography } from "@mui/material";
-import EmojiObjectsOutlinedIcon from "@mui/icons-material/EmojiEmotionsOutlined";
-import CodeIcon from "@mui/icons-material/Code";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import BuildIcon from "@mui/icons-material/Build";
+import { Button, Grid, Slide, Typography } from "@mui/material";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import "fragments/about-me/about-me.scss";
 import { skillsWithProgress } from "data/skills";
@@ -23,7 +19,7 @@ import {
   EmojiObjectsOutlined,
   VerifiedUser,
 } from "@mui/icons-material";
-import { CURRENT_JOB_ES } from "data/constants";
+import { CURRENT_JOB_ES, CV_PATH } from "data/constants";
 
 export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
   const { useController = useAboutMeController } = props;
@@ -171,11 +167,7 @@ export const AboutMeFragment: React.FC<AboutMeFragmentProps> = (props) => {
                       key: "aboutme.profile-description-extra",
                     })} ${CURRENT_JOB_ES}`}
                   </Typography>
-                  <Button
-                    href="/documents/CV3.pdf"
-                    sx={{ ...classes.button }}
-                    download
-                  >
+                  <Button href={CV_PATH} sx={{ ...classes.button }} download>
                     <GetAppIcon />
                     {translate({ key: "aboutme.button-downloadCv" })}
                   </Button>

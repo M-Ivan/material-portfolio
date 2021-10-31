@@ -1,13 +1,11 @@
+import { useState } from "react";
+import { AboutMeController } from "fragments/about-me/interfaces";
 
-
-import { useState } from 'react';
-import { AboutMeController } from 'fragments/about-me/interfaces';
-
-export const useAboutMeController = (): /* <--Dependency Injections  like services hooks */
-AboutMeController => {
+export const useAboutMeController =
+  (): /* <--Dependency Injections  like services hooks */ AboutMeController => {
     /* State */
     // Ex. const [count, setCount] = useState(0);
-    const [example, setExample] = useState('example');
+    const [example, setExample] = useState("example");
 
     /* Listeners */
     // Ex. useEffect(() => { onSessionUpdate(); }, [session]);
@@ -15,7 +13,7 @@ AboutMeController => {
     /* View Events */
     //Ex. const onIncreaseButtonPressed = () => {}
     const onButtonPressed = () => {
-        // Example event
+      // Example event
     };
 
     /* Private Methods */
@@ -23,4 +21,4 @@ AboutMeController => {
 
     // Return state and events
     return { example, onButtonPressed };
-};
+  };
